@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaiju Flix Custom API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f1115;
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        h1 { color: #6366f1; margin-top: 0; }
+        h2 { color: #38bdf8; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+        .endpoint {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #6366f1;
+        }
+        code {
+            background: #334155;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-family: monospace;
+        }
+        .try-it {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .try-it:hover { background: #4f46e5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kaiju Flix API is Online! 🟢</h1>
+        <p>This is your custom Cloudflare Serverless Anime API. It scrapes and bypasses CORS securely on the edge.</p>
+
+        <h2>Available Endpoints</h2>
+
+        <div class="endpoint">
+            <h3>1. Search Anime</h3>
+            <p><strong>URL:</strong> <code>/api/search?q=[query]</code></p>
+            <p>Searches Gogoanime for titles and returns IDs and cover images.</p>
+            <a href="/api/search?q=naruto" class="try-it" target="_blank">Test Search Endpoint</a>
+        </div>
+
+        <div class="endpoint">
+            <h3>2. Get Anime Info & Episodes</h3>
+            <p><strong>URL:</strong> <code>/api/info?id=[anime_id]</code></p>
+            <p>Extracts the hidden movie_id and pulls the raw episode list from the AJAX server.</p>
+            <a href="/api/info?id=naruto" class="try-it" target="_blank">Test Info Endpoint</a>
+        </div>
+
+        <div class="endpoint">
+            <h3>3. Get Streaming Link</h3>
+            <p><strong>URL:</strong> <code>/api/watch?id=[episode_id]</code></p>
+            <p>Extracts the raw video streaming embed URL securely.</p>
+            <a href="/api/watch?id=naruto-episode-1" class="try-it" target="_blank">Test Watch Endpoint</a>
+        </div>
+
+        <h2 style="margin-top: 40px;">How to Use in your JS</h2>
+        <pre style="background: #0f172a; padding: 15px; border-radius: 8px; overflow-x: auto; color: #a5b4fc;">
+// Example: Searching for an anime
+const res = await fetch('https://your-domain.pages.dev/api/search?q=demon slayer');
+const data = await res.json();
+console.log(data.results);
+        </pre>
+    </div>
+</body>
+</html>
